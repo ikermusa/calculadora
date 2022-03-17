@@ -6,7 +6,7 @@ import operaciones.Operaciones;
  * 
  * @author iker
  * 
- * @apiNote Esta clase es la que se ejecuta las otras dos clases que son menu y operaciones.
+ * @apiNote Esta clase es la que ejecuta las otras dos clases que son menu y operaciones.
  * Tambien tiene un bucle que comprueba si quiere repetir o no
  *
  */
