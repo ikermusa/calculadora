@@ -3,6 +3,7 @@ import menu.Menu;
 import operaciones.Operaciones;
 
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.logging.*;
 
 /**
@@ -17,34 +18,17 @@ import java.util.logging.*;
 public class Calculadora{
 	private static final Logger LOGGER = Logger.getLogger(Calculadora.class.getName());
 	
-    public static void main(String[] args) {   
+    public static void main(String[] args) {
+    	
+    	configurarLog();
+    	
     	int resultado = 0;
     	String operacion = "";
     	int[] operandos = new int[2];
     	Menu menu = new Menu();
     	Operaciones operaciones = new Operaciones();
-    	Handler fileHandler = null;
-    	Handler consoleHandler  = new ConsoleHandler();
     	
-    	
-    	try {
-    	fileHandler  = new FileHandler("./operaciones.log");;
-    	}catch(IOException exception){
-    	       LOGGER.log(Level.SEVERE, "Ocurrio un error en FileHandler.", exception);
-    	   }
-    	LogManager.getLogManager().reset();
-
-    	//Asignar handlers al objeto LOGGER
-    	LOGGER.addHandler(consoleHandler);
-    	LOGGER.addHandler(fileHandler);
-
-    	//Establecer niveles a handlers y LOGGER
-    	consoleHandler.setLevel(Level.WARNING);
-    	fileHandler.setLevel(Level.FINE);
-    	LOGGER.setLevel(Level.FINE);
-    	         
-    	         
-    	       
+       
     	do {
     		operandos = menu.pedirNumeros();
     		operacion = menu.menuOpciones();
@@ -75,4 +59,28 @@ public class Calculadora{
 
     	} while (menu.repetir());
    	}
+    
+    public static void configurarLog() {
+    	LOGGER.setUseParentHandlers(false);
+
+    	Handler fileHandler = null;
+    	Handler consoleHandler  = new ConsoleHandler();
+    	
+    	//si no consigue meter en la ruta lanza error en consola
+    	try {
+    	fileHandler  = new FileHandler("./operaciones.log");;
+    	}catch(IOException exception){
+    	       LOGGER.log(Level.SEVERE, "Ocurrio un error en FileHandler.", exception);
+    	   }
+
+    	//Asignar handlers al objeto LOGGER
+    	LOGGER.addHandler(consoleHandler);
+    	LOGGER.addHandler(fileHandler);
+
+    	//Establecer niveles a handlers y LOGGER
+    	consoleHandler.setLevel(Level.WARNING);
+    	fileHandler.setLevel(Level.FINE);
+    	LOGGER.setLevel(Level.FINE);
+    }
+    
 }
