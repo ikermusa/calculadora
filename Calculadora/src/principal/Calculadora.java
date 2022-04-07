@@ -2,6 +2,7 @@ package principal;
 import menu.Menu;
 import operaciones.Operaciones;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.PublicKey;
 import java.util.logging.*;
@@ -16,7 +17,24 @@ import java.util.logging.*;
  */
 
 public class Calculadora{
-	private static final Logger LOGGER = Logger.getLogger(Calculadora.class.getName());
+	private static final LogManager logManager = LogManager.getLogManager();
+	private static final Logger LOGGER = Logger.getLogger("confLogger");
+
+	static {
+
+		try {
+
+			logManager.readConfiguration(new FileInputStream("./configuracion/configLognulo.properties"));
+
+		}
+
+		catch (IOException exception) {
+
+			LOGGER.log(Level.SEVERE, "Error al cargar la configuracion.", exception);
+		}
+	}
+	
+	
 	
     public static void main(String[] args) {
     	

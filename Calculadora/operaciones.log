@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
-<record>
-  <date>2022-03-23T10:17:06.546031200Z</date>
-  <millis>1648030626546</millis>
-  <nanos>31200</nanos>
-  <sequence>0</sequence>
-  <logger>principal.Calculadora</logger>
-  <level>FINE</level>
-  <class>principal.Calculadora</class>
-  <method>main</method>
-  <thread>1</thread>
-  <message>Operacion : + | operando 1: 1 | operando 2: 1 | Resultado: 2</message>
-</record>
 </log>
